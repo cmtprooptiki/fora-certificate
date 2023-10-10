@@ -78,7 +78,7 @@ def main():
             </body
         """
     st.markdown(newhtml,unsafe_allow_html=True)
-    html_logo ="<img style='display:block; margin-left:auto; margin-right:auto; text-align:center;' src='https://gbvcyclades.epapsy.gr/wp-content/uploads/2022/05/logoandtext.png'  width=200 >"
+    html_logo ="<img style='display:block; margin-left:auto; margin-right:auto; text-align:center;' src='https://healthcare-management.gr/wp-content/uploads/2023/10/Logo-1.png'  width=200 >"
     st.markdown(html_logo, unsafe_allow_html=True)
 
 
@@ -96,7 +96,7 @@ def main():
                             # to be useless here 
         mydb = client["iamdb"]
 
-        mycol = mydb["usergbv"]   
+        mycol = mydb["userfora"]   
         item_details= mycol.find()
         list_cur=[]
         for item in item_details:
