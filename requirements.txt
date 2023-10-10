@@ -1,0 +1,6 @@
+pdfkit
+streamlit
+streamlit-authenticator==0.1.3
+pip
+pandas
+pymongo
