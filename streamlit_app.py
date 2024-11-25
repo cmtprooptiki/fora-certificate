@@ -68,6 +68,9 @@ def main():
                 .stAppToolbar {
                 display:none;
                 }
+                ._profileContainer_gzau3_53 {
+                display:none;
+                }
 
                 
 
