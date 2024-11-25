@@ -65,6 +65,10 @@ def main():
 
                 }
 
+                .stAppToolbar {
+                display:none;
+                }
+
                 
 
 
