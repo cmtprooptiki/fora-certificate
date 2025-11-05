@@ -133,7 +133,7 @@ def main():
 
             # right.write("Here's the template we'll be using:")
 
-            right.image("https://cmtprooptiki.gr/api/thumbnail.gif", width=300)
+            right.image("https://healthcare-management.gr/wp-content/uploads/2025/11/Fora-2025_Πιστοποιητικό-Ομιλητές.png", width=300)
 
             env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
             template = env.get_template("template.html")
