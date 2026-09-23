@@ -6,6 +6,7 @@ from streamlit.components.v1 import iframe
 import time
 import pandas as pd
 from pymongo import MongoClient
+from pymongo.errors import PyMongoError
 import os
 
 
@@ -128,9 +129,10 @@ def main():
         for item in item_details:
         # This does not give a very readable output
             list_cur.append(item)
-    except MongoClient.errors.ServerSelectionTimeoutError as err:
-        # do whatever you need 
-        st.write(err)   
+    except PyMongoError as err:
+        st.error("Δεν ήταν δυνατή η σύνδεση με τη βάση δεδομένων. Παρακαλώ δοκιμάστε αργότερα.")
+        print(f"MongoDB connection failed: {err}")
+        st.stop()
     if submit_button is True:
         df=pd.DataFrame.from_dict(list_cur)
 
