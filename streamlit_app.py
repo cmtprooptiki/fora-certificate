@@ -1,5 +1,4 @@
-import pdfkit
-from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+from fpdf import FPDF
 from datetime import date
 import streamlit as st
 import streamlit_authenticator as stauth
@@ -9,6 +8,26 @@ import pandas as pd
 from pymongo import MongoClient
 import os
 
+
+# Certificate background, committed to the repo (the old healthcare-management.gr URL is gone)
+CERT_BG = "certificate_bg.png"
+# Provided by fonts-dejavu-core in packages.txt; supports Greek
+CERT_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+# Vertical centre of the name, as a fraction of the page height
+NAME_Y_RATIO = 0.46
+NAME_FONT_SIZE = 16
+
+
+def make_certificate(name):
+    pdf = FPDF(orientation="L", unit="mm", format="A4")
+    pdf.set_auto_page_break(False)
+    pdf.add_page()
+    pdf.image(CERT_BG, x=0, y=0, w=pdf.w, h=pdf.h)
+    pdf.add_font("DejaVu", "B", CERT_FONT)
+    pdf.set_font("DejaVu", "B", NAME_FONT_SIZE)
+    pdf.set_y(pdf.h * NAME_Y_RATIO - 5)
+    pdf.cell(0, 10, name, align="C")
+    return bytes(pdf.output())
 
 
 def main():
@@ -133,10 +152,7 @@ def main():
 
             # right.write("Here's the template we'll be using:")
 
-            right.image("https://healthcare-management.gr/wp-content/uploads/2025/11/Fora-2025_Πιστοποιητικό-Ομιλητές.png", width=300)
-
-            env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-            template = env.get_template("template.html")
+            right.image(CERT_BG, width=300)
 
 
             # left.write("Fill in the data:")
@@ -147,14 +163,7 @@ def main():
             # period=perds
             # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
 
-            html = template.render(
-                student=student,
-                course=course,
-                grade=f"{grade}/100",
-                date=date.today().strftime("%B %d, %Y"),
-            )
-
-            pdf = pdfkit.from_string(html, False)
+            pdf = make_certificate(student)
             st.balloons()
 
             right.success("🎉 Το πιστοποιητικό σας δημιουργήθηκε!")
