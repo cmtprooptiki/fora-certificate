@@ -105,7 +105,7 @@ def main():
             </body
         """
     st.markdown(newhtml,unsafe_allow_html=True)
-    html_logo ="<img style='display:block; margin-left:auto; margin-right:auto; text-align:center;' src='https://healthcare-management.gr/wp-content/uploads/2023/10/MicrosoftTeams-image.png'  width=380 >"
+    html_logo ="<img style='display:block; margin-left:auto; margin-right:auto; text-align:center;' src='https://api.healthcare-management.gr/uploads/foralogo_ed7b7dceaa.png'  width=380 >"
     st.markdown(html_logo, unsafe_allow_html=True)
 
 
