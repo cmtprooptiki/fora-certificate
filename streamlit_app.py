@@ -15,8 +15,8 @@ CERT_BG = "certificate_bg.png"
 # Provided by fonts-dejavu-core in packages.txt; supports Greek
 CERT_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 # Vertical centre of the name, as a fraction of the page height
-NAME_Y_RATIO = 0.46
-NAME_FONT_SIZE = 16
+NAME_Y_RATIO = 0.425
+NAME_FONT_SIZE = 22
 
 
 def make_certificate(name):
